@@ -79,7 +79,8 @@ def imagen_request(image_path: str, upload,rand_seed,strength):
         # Do nothing
         print("No rotation to perform based on Exif data")
     #Display uploaded image with correct rotation
-    col1.image(input_img)
+    col1.write("#### Original Image:")
+    col1.image(input_img, width=400)
 
     buffer = BytesIO()
     input_img.save(buffer, format="png")
@@ -169,7 +170,7 @@ def main():
 
         with container2:
             if my_upload is not None:
-                col1.write("### Original Image:")
+                #col1.write("### Original Image:")
                 #col1.image(my_upload)
         with container3:
                 if generate_button:

@@ -77,6 +77,7 @@ def imagen_request(image_path: str, upload,rand_seed,strength):
             input_img=input_img.rotate(90, expand=True)
     except:
         # Do nothing
+        print("No rotation to perform based on Exif data")
 
     buffer = BytesIO()
     input_img.save(buffer, format="png")

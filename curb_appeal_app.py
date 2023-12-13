@@ -107,14 +107,14 @@ st.sidebar.image('images/curb_appeal_logo.png')
 
 
 # increase number images returned
-num_images = st.sidebar.slider("Number of images", 1, 10, 1)
+num_images = st.sidebar.slider("Number of images", 1, 10, 2)
 base_payload.num_images = num_images
 
 #Set image display grid output
 n = st.sidebar.number_input("Select image grid Width", 1, 5, 2)
 
 
-strength = st.sidebar.slider("Creativity Slider",0.3, 0.7, 0.3,0.05)
+strength = st.sidebar.slider("Creativity Slider",0.3, 0.7, 0.45,0.05)
 
 st.markdown("""
 <style>

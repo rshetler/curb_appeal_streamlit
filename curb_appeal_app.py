@@ -144,10 +144,12 @@ def main():
         st.write('### Curb Appeal - Powered by OctoAI')
         st.markdown('Curb Appeal, is an AI home and landscape design idea generator powered by OctoAI. Simply upload an image of your home, adjust the level of creativity in the output, and the app will generate various options for you.')
     
-        my_upload = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])  
+        my_upload = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"]) 
+
+        st.markdown(":left-arrow: Adjust additional settings on the sidebar panel.") 
 
         generate_button = st.button("Beautify Home")
-        
+
         with container2:
             if my_upload is not None:
                 col1.write("### Original Image:")

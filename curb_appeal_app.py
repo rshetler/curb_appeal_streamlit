@@ -130,7 +130,6 @@ st.sidebar.markdown('<p class="big-font">(lower: closer to original, higher: mor
 #prompt = st.sidebar.text_input("Prompt", value=base_payload.prompt)
 #base_payload.prompt = prompt
 
-generate_button = st.sidebar.button("Beautify Home")
 
 container1 = st.container()
 col1, col2 = container1.columns(2)
@@ -147,6 +146,8 @@ def main():
     
         my_upload = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])  
 
+        generate_button = st.button("Beautify Home")
+        
         with container2:
             if my_upload is not None:
                 col1.write("### Original Image:")

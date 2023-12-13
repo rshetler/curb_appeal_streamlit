@@ -1,6 +1,6 @@
 # Simple streamlit starter page
 import streamlit as st
-from PIL import Image
+from PIL import Image, ExifTags
 from octoai.client import Client
 from octoai.clients.image_gen import Engine, ImageGenerator
 #import os
@@ -8,8 +8,6 @@ from pydantic import BaseModel
 from typing import Dict
 from io import BytesIO
 from base64 import b64decode, b64encode
-from itertools import cycle
-#import requests
 import random
 
 # Initialize the client
@@ -64,6 +62,22 @@ image_path.mkdir(exist_ok=True)
 def imagen_request(image_path: str, upload,rand_seed,strength):
     
     input_img = Image.open(upload)
+
+    try:
+        # Rotate based on Exif Data
+        for orientation in ExifTags.TAGS.keys():
+            if ExifTags.TAGS[orientation]=='Orientation':
+                break
+        exif = input_img._getexif()
+        if exif[orientation] == 3:
+            input_img=input_img.rotate(180, expand=True)
+        elif exif[orientation] == 6:
+            input_img=input_img.rotate(270, expand=True)
+        elif exif[orientation] == 8:
+            input_img=input_img.rotate(90, expand=True)
+    except:
+        # Do nothing
+
     buffer = BytesIO()
     input_img.save(buffer, format="png")
     image_out_bytes = buffer.getvalue()

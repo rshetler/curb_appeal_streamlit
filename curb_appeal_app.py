@@ -35,6 +35,7 @@ class SDXLRequest(BaseModel):
 def random_seed():
     return random.randint(0, 10000000000)
     
+#Build the SDXLRequest 
 base_payload = SDXLRequest(
     prompt="house with updated landscaping",
     seed=random_seed(),
@@ -59,6 +60,7 @@ from pathlib import Path
 image_path = Path("sd_images")
 image_path.mkdir(exist_ok=True)
 
+#Image request method - takes image path, upload
 def imagen_request(image_path: str, upload,rand_seed,strength):
     
     input_img = Image.open(upload)
@@ -82,11 +84,11 @@ def imagen_request(image_path: str, upload,rand_seed,strength):
     col1.write("#### Original Image:")
     col1.image(input_img, width=400)
 
+    #Encode image as a base64 value to be sent to SDXL
     buffer = BytesIO()
     input_img.save(buffer, format="png")
     image_out_bytes = buffer.getvalue()
     image_out_b64 = b64encode(image_out_bytes)
-
 
     image_gen = ImageGenerator(token=st.secrets["octoai_token"])
     image_gen_response = image_gen.generate(
@@ -131,7 +133,7 @@ base_payload.num_images = num_images
 #Set image display grid output
 n = st.sidebar.number_input("Select image grid Width", 1, 5, 2)
 
-
+#Denoising stregth slider presented as creativity slider input
 strength = st.sidebar.slider("Creativity Slider",0.3, 0.7, 0.45,0.05)
 
 st.markdown("""

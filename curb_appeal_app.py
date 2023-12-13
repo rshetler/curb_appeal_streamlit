@@ -155,8 +155,6 @@ col1, col2 = container1.columns(2)
 container2 = st.container()
 col1, col2 = container2.columns(2)
 
-container3 = st.container()
-
 def main():
      with container1:  
         st.write('### Curb Appeal - Powered by OctoAI')
@@ -169,10 +167,6 @@ def main():
         generate_button = st.button("Beautify Home")
 
         with container2:
-            if my_upload is not None:
-                #col1.write("### Original Image:")
-                #col1.image(my_upload)
-        with container3:
                 if generate_button:
                         try:
                             st.spinner("Generating Image")  

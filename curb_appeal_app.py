@@ -79,7 +79,7 @@ def imagen_request(image_path: str, upload,rand_seed,strength):
         # Do nothing
         print("No rotation to perform based on Exif data")
     #Display uploaded image with correct rotation
-    col1.image(my_upload)
+    col1.image(input_img)
 
     buffer = BytesIO()
     input_img.save(buffer, format="png")

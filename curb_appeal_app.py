@@ -146,7 +146,7 @@ def main():
     
         my_upload = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"]) 
 
-        st.markdown("## :arrow_left: Adjust additional settings on the sidebar panel.") 
+        st.markdown("#### :arrow_left: Adjust additional settings on the sidebar panel.") 
 
         generate_button = st.button("Beautify Home")
 
